@@ -56,10 +56,30 @@ colSums(is.na(mortgage))
 
 # mamy 270 wartosci NA w kolumnie LTV_time 
 ## co z nimi zrobic ???
+# przeprowadzic imputacjem czyli wstawic avg, median, min, max z rozkladu zmiennej 
 
+skewness(mortgage$LTV_time) #NA
+kurtosis(mortgage$LTV_time) #NA
+hist(mortgage$LTV_time, breaks = "Scott")
+# pierwszy wybor- mediana 
+mortgage$LTV_time[is.na(mortgage$LTV_time)] <- median(mortgage$LTV_time, na.rm = TRUE)
+#sprawdzenie
+hist(mortgage$LTV_time, breaks = "Scott")
+colSums(is.na(mortgage))
+# dobrze to wyglada, ale wartoby się jeszcze spytac:
+# ??? jakie są kryteria wyboru: rodzaju imputacji, dyskretyzacji, lub zamodelowania zmiennnych NA ???
 
+###Którą zmienną bdziemy objaśniać?
+str(mortgage) #Wszystkie zmienne są numeryczne lub intigery 
 
+###############Analiza zmiennych
+#id
+#w id mamy powtarzające się wartości - czy to jest w tej bazie porządane ?
 
+#time 
+#w time mamy powtarzające się wartości - czy to jest w tej bazie porządane ?
+
+#orig_time - mamy wartosci ujemne 
 
 
 
